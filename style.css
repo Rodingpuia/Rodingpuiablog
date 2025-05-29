@@ -1,0 +1,703 @@
+/* ===============================
+   1. CSS Variables for Personalization
+   =============================== */
+:root {
+    /* Base Colors */
+    --color-primary-dark: #2c3e50;    /* Dark Charcoal Blue - for backgrounds, text */
+    --color-light-background: #f8f9fa; /* Off-white - for main content backgrounds */
+    --color-medium-background: #ecf0f1; /* Light Gray - for alternate sections */
+    --color-text-dark: #34495e;      /* Slightly lighter dark text */
+    --color-text-light: #ecf0f1;     /* Light text for dark backgrounds */
+    --color-border: #e0e0e0;         /* Subtle border color */
+    --color-shadow: rgba(0, 0, 0, 0.1); /* General shadow color */
+
+    /* Accent Colors (Change these to make it truly YOURS!) */
+    --color-accent-1: #1abc9c;       /* Vibrant Teal - for primary buttons, highlights */
+    --color-accent-2: #f1c40f;       /* Sunny Gold - for active links, underlines, hero elements */
+    --color-accent-3: #9b59b6;       /* Elegant Purple - for secondary accents, icons */
+    --color-accent-4: #e74c3c;       /* Energetic Red - for warnings, error indicators */
+    --color-accent-5: #3498db;       /* Calm Blue - for secondary buttons */
+
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif; /* Classy serif for titles */
+    --font-body: 'Open Sans', sans-serif;      /* Clean sans-serif for content */
+    --font-size-base: 1.1em;
+}
+
+
+/* ===============================
+   2. Basic Reset & Global Styles
+   =============================== */
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-light-background);
+    color: var(--color-text-dark);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px; /* Increased padding for more breathing room */
+}
+
+a {
+    color: var(--color-accent-1);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-2);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-primary-dark);
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+/* Section Headings */
+h2 {
+    text-align: center;
+    font-size: 3em; /* Larger, more impactful heading */
+    color: var(--color-primary-dark);
+    margin-bottom: 50px; /* More space below heading */
+    position: relative;
+    padding-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100px; /* Longer underline */
+    height: 4px; /* Thicker underline */
+    background-color: var(--color-accent-2); /* Accent color underline */
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--color-text-dark);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons - Reusable styles */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--color-accent-1);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #16a085; /* Slightly darker teal */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--color-accent-3);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: #8e44ad; /* Slightly darker purple */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-comment {
+    background-color: var(--color-accent-2);
+    color: var(--color-primary-dark); /* Dark text for yellow button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-comment:hover {
+    background-color: #f39c12; /* Slightly darker yellow */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-contact {
+    background-color: var(--color-accent-5);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-contact:hover {
+    background-color: #2980b9; /* Slightly darker blue */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ===============================
+   3. Header & Navigation
+   =============================== */
+header {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    padding: 1.5rem 0; /* More padding */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3.5em; /* Larger title */
+    letter-spacing: 2px;
+    color: var(--color-text-light);
+    font-weight: 700;
+}
+
+.dot {
+    color: var(--color-accent-2); /* Yellow dot for emphasis */
+}
+
+header .tagline {
+    font-size: 1.2em;
+    opacity: 0.9;
+    margin-top: 5px;
+    font-family: var(--font-body);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px; /* Spacing between nav items */
+}
+
+nav ul li a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex; /* For icon and text alignment */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+nav ul li a:hover,
+nav ul li a.active { /* 'active' class for current page highlight */
+    background-color: var(--color-accent-3); /* Purple background on hover */
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===============================
+   4. Main Content Sections
+   =============================== */
+main {
+    padding: 40px 0;
+}
+
+.content-section {
+    padding: 60px 0; /* More vertical padding */
+    margin-bottom: 40px; /* Space between sections */
+    background-color: var(--color-light-background);
+    box-shadow: 0 10px 30px var(--color-shadow); /* More prominent shadow */
+    border-radius: 12px; /* Softer rounded corners */
+    overflow: hidden; /* Clear floats/contain children */
+}
+
+.content-section:nth-of-type(even) { /* Alternate background for readability */
+    background-color: var(--color-medium-background);
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--color-accent-5), var(--color-accent-3)); /* Blue to Purple Gradient */
+    color: var(--color-text-light);
+    margin-top: -30px; /* Overlap with header */
+    border-radius: 0;
+    box-shadow: none; /* Remove section shadow here */
+    position: relative;
+    overflow: hidden; /* For any background effects */
+}
+
+/* Hero Background Pattern (Optional) */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23ffffff" opacity="0.1"><circle cx="25" cy="25" r="5"/><circle cx="75" cy="75" r="5"/></g></svg>'); /* Subtle dot pattern */
+    background-size: 20px 20px;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 2; /* Bring content above pattern */
+}
+
+.profile-card {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white card */
+    color: var(--color-primary-dark);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    display: inline-block; /* Shrink to content width */
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-picture img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 7px solid var(--color-accent-2); /* Gold border for profile pic */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    margin-bottom: 25px;
+    animation: pulse 2s infinite ease-in-out; /* Subtle animation */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+
+.profile-name {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: var(--color-primary-dark);
+}
+
+.profile-intro {
+    font-size: 1.25em;
+    color: var(--color-text-dark);
+    margin-bottom: 30px;
+}
+
+.social-links {
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    color: var(--color-primary-dark);
+    font-size: 1.8em;
+    margin: 0 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-accent-1);
+    transform: translateY(-5px) scale(1.1);
+}
+
+
+/* Blog Posts Section */
+.blog-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px; /* More space between cards */
+    margin-top: 50px;
+}
+
+.blog-post-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Stronger shadow */
+    overflow: hidden; /* Ensure image corners are rounded */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-10px); /* Lift higher on hover */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.blog-post-card .post-image img {
+    width: 100%;
+    height: 220px; /* Fixed height for consistent images */
+    object-fit: cover;
+    display: block;
+    border-bottom: 4px solid var(--color-accent-1); /* Accent border below image */
+}
+
+.blog-post-card h3 {
+    font-size: 2em;
+    padding: 20px 25px 10px;
+    color: var(--color-primary-dark);
+}
+
+.blog-post-card .post-meta {
+    font-size: 0.9em;
+    color: #777;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px; /* Spacing for icons and text */
+}
+.blog-post-card .post-meta i {
+    color: var(--color-accent-3); /* Purple icons */
+}
+
+
+.blog-post-card p {
+    padding: 0 25px 20px;
+    margin: 0;
+    color: #555;
+}
+
+.blog-post-card .btn-secondary {
+    display: block; /* Make button full width */
+    width: calc(100% - 50px); /* Account for padding */
+    margin: 0 25px 25px; /* Margin around button */
+    text-align: center;
+    padding: 12px 0; /* Adjust padding for full width button */
+}
+
+/* Gallery Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px; /* Taller images for gallery */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 3px solid transparent; /* For hover effect */
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05); /* Zoom in slightly */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    border-color: var(--color-accent-2); /* Gold border on hover */
+}
+
+/* Comments & Contact Forms */
+.form-input {
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #fcfcfc;
+}
+
+.form-input:focus {
+    border-color: var(--color-accent-1);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.2); /* Soft focus ring */
+    background-color: #fff;
+}
+
+.comment-form, .contact-form {
+    max-width: 700px; /* Wider forms */
+    margin: 0 auto 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* More space between fields */
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.form-note {
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.recent-comments {
+    max-width: 700px;
+    margin: 50px auto 0 auto;
+    padding: 30px;
+    border-top: 1px dashed var(--color-border); /* Dashed border */
+    background-color: var(--color-light-background);
+    border-radius: 10px;
+}
+
+.recent-comments h3 {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    position: relative;
+}
+
+.recent-comments h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    width: 50px;
+    height: 2px;
+    background-color: var(--color-accent-3);
+}
+
+.comment-card {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-left: 5px solid var(--color-accent-2); /* Gold stripe */
+}
+
+.comment-card .comment-author {
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.comment-card .comment-author i {
+    color: var(--color-accent-3); /* Purple icon */
+}
+
+.comment-card .comment-content {
+    font-style: italic;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.comment-card .comment-date {
+    font-size: 0.85em;
+    color: #888;
+    text-align: right;
+    display: block;
+}
+
+/* ===============================
+   5. Footer
+   =============================== */
+footer {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 50px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.footer-note {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* ===============================
+   6. Responsive Design
+   =============================== */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 20px;
+    }
+    header h1 {
+        font-size: 2.8em;
+    }
+    nav ul {
+        gap: 15px;
+    }
+    nav ul li a {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+    h2 {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+    .profile-card {
+        padding: 30px;
+    }
+    .profile-picture img {
+        width: 150px;
+        height: 150px;
+    }
+    .profile-name {
+        font-size: 2.2em;
+    }
+    .profile-intro {
+        font-size: 1.1em;
+    }
+    .blog-posts-grid,
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    .blog-post-card h3 {
+        font-size: 1.6em;
+    }
+    .gallery-grid img {
+        height: 220px;
+    }
+    .comment-form, .contact-form {
+        padding: 30px;
+        gap: 15px;
+    }
+    .recent-comments {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+    header .tagline {
+        font-size: 1em;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    nav ul li a {
+        justify-content: center;
+    }
+    h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .section-description {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .hero-section {
+        padding: 60px 0;
+    }
+    .profile-card {
+        padding: 25px;
+    }
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+    .profile-name {
+        font-size: 2em;
+    }
+    .social-links a {
+        font-size: 1.5em;
+        margin: 0 10px;
+    }
+    .blog-posts-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        gap: 25px;
+    }
+    .blog-post-card .post-image img {
+        height: 180px;
+    }
+    .gallery-grid img {
+        height: 180px;
+    }
+    .comment-form, .contact-form {
+        padding: 25px;
+    }
+    .recent-comments {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    header .tagline {
+        font-size: 0.9em;
+    }
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+    .profile-card {
+        padding: 20px;
+    }
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+        border-width: 4px;
+    }
+    .profile-name {
+        font-size: 1.8em;
+    }
+    .profile-intro {
+        font-size: 1em;
+    }
+    .social-links a {
+        font-size: 1.3em;
+        margin: 0 8px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
